@@ -1,0 +1,46 @@
+#container {
+  text-align: center;
+}
+
+body {
+  background-color: #cccccc;
+}
+
+h1 {
+  font-family: cursive;
+  font-size: 3em;
+  color: #dc0000;
+}
+
+h2 {
+  font-size: 2em;
+  font-family: sans-serif;
+}
+
+.input {
+  width: 30%;
+  height: 30px;
+  text-align: center;
+}
+
+.buttonValidate {
+  width: 15%;
+  height: 37px;
+  background-color: white;
+  font-size: 1.em;
+}
+
+.players {
+  margin: 1em auto;
+  padding: 1em;
+  text-align: center;
+}
+
+.onePlayer {
+  font-size: 2em;
+  font-family: fantasy;
+  border: 3px grey solid;
+  width: 150px;
+  margin: 2px auto;
+  color: #090052;
+}
