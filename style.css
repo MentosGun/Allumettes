@@ -31,9 +31,16 @@ h2 {
 }
 
 .players {
-  margin: 1em auto;
+  margin: auto;
+  margin-bottom: 2em;
   padding: 1em;
   text-align: center;
+}
+
+#length {
+  font-size: 2em;
+  color: red;
+  margin: 0;
 }
 
 .onePlayer {
@@ -41,10 +48,16 @@ h2 {
   font-family: fantasy;
   border: 3px grey solid;
   width: max-content;
-  margin: 2px auto;
+  margin: 2px;
   color: #090052;
 }
 
 .divMatches {
   display: none;
+}
+
+#status {
+  font-size: 2em;
+  color: red;
+  margin: 0;
 }
