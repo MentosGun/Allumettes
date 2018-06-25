@@ -19,7 +19,7 @@ h2 {
 
 .input {
   width: 30%;
-  height: 30px;
+  height: 2em;
   text-align: center;
 }
 
@@ -40,7 +40,11 @@ h2 {
   font-size: 2em;
   font-family: fantasy;
   border: 3px grey solid;
-  width: 150px;
+  width: max-content;
   margin: 2px auto;
   color: #090052;
+}
+
+.divMatches {
+  display: none;
 }
