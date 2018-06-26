@@ -18,7 +18,10 @@ h1 {
   font-family: cursive;
   color: rgb(182, 0, 0);
   background-color: rgb(14, 0, 0);
-  border-radius: 10px
+  border-radius: 10px;
+  position: fixed;
+  right: 6em;
+  top: 0;
 }
 
 h2 {
@@ -27,9 +30,16 @@ h2 {
 }
 
 .input {
-  width: 30%;
+  width: 20%;
   height: 2em;
   text-align: center;
+  font-size: 1em;
+  font-family: sans-serif;
+}
+
+.input:focus {
+  background-color: #a9a9a9;
+  border-color: rgb(0, 104, 179)
 }
 
 .buttonValidate {
@@ -55,18 +65,29 @@ h2 {
 .onePlayer {
   font-size: 2em;
   font-family: fantasy;
-  border: 3px grey solid;
+  border: 3px rgb(60, 60, 60) solid;
   width: max-content;
-  margin: 2px;
+  margin: auto 5px;
   color: #090052;
+  padding: 0.2em;
 }
 
 .divMatches {
   display: none;
+  margin-bottom: 2em;
 }
 
 #status {
   font-size: 2em;
   color: red;
-  margin: 0;
+  margin: auto;
+  margin-bottom: 2em;
+}
+
+#gameButton {
+  background-color: rgb(0, 103, 210);
+  color: rgb(0, 0, 29);
+  font-family: cursive;
+  font-size: 1em;
+  margin: 1em;
 }

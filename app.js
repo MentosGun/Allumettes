@@ -13,9 +13,10 @@ let app = {
   gameButton: null,
   remainingMatches: null,
   instantPlayer: null,
+  playerName: null,
   restartGame: function() {
     app.playerInput.value = ""
-    if (app.matchesInput.value) {
+    if (app.matchesInput) {
       app.matchesInput.value = ""
     }
     while (app.players.firstChild) {
@@ -113,17 +114,21 @@ let app = {
     }
   },
   startGame: function() {
-    app.matchesInput.value = ""
     app.divMatches.style.display = "none"
-    app.status.style.margin = "auto"
+    app.status.style.marginBottom = "0.5em"
     app.status.style.color = "black"
     app.status.style.fontSize = "1.5em"
-    app.status.innerHTML = app.matchesInput.value + " Allumettes"
+    app.status.innerHTML = app.matchesInput.value + " Allumettes restantes"
     app.createRadioInputs()
   },
   createRadioInputs: function() {
+    app.matchesInput.value = ""
     let selectMatches = document.createElement('div')
     selectMatches.id = "selectMatches"
+    let playerName = document.createElement('span')
+    playerName.id = "playerName"
+    app.playerName = playerName
+    selectMatches.appendChild(playerName)
     let index = 1
     do {
       let radio = document.createElement('input')
@@ -149,6 +154,7 @@ let app = {
     gameButton.setAttribute("name", "game")
     app.game.appendChild(gameButton)
     app.gameButton = document.querySelector('#gameButton')
+    app.gameButton.innerHTML = "Retirer allumettes"
     app.remainingMatches = app.status.textContent.substr(0, 2)
     app.gameLoops()
   },
@@ -160,7 +166,7 @@ let app = {
   },
   changePlayer: function() {
     app.instantPlayer = document.querySelector('#player' + app.playerNumber).textContent.substr(4)
-    app.gameButton.innerHTML = app.instantPlayer
+    app.playerName.innerHTML = "Tour: " + app.instantPlayer
   },
   oneLoop: function() {
     let recoveredValue = null
@@ -172,10 +178,11 @@ let app = {
     }
     app.remainingMatches -= recoveredValue
     if (app.remainingMatches === 1) {
-      app.status.innerHTML = app.remainingMatches + ' Allumette'
+      app.status.innerHTML = app.remainingMatches + ' Allumette restante'
+      app.gameButton.innerHTML = "Dernière allumette"
     }
     else {
-      app.status.innerHTML = app.remainingMatches + ' Allumettes'
+      app.status.innerHTML = app.remainingMatches + ' Allumettes restantes'
     }
     app.playerNumber++
     app.checkPlayerNumber()
@@ -199,7 +206,9 @@ let app = {
     app.showWinner()
   },
   showWinner: function() {
-    app.status.innerHTML = "Loser : " + app.instantPlayer
+    app.status.innerHTML = "YOU LOSE " + app.instantPlayer
+    app.status.style.fontFamily = "serif"
+    app.status.style.fontSize = "3em"
   }
 }
 
