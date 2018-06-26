@@ -60,6 +60,7 @@ h2 {
   font-size: 2em;
   color: red;
   margin: 0;
+  margin-bottom: 1em;
 }
 
 .onePlayer {
@@ -82,6 +83,7 @@ h2 {
   color: red;
   margin: auto;
   margin-bottom: 2em;
+  width: max-content;
 }
 
 #gameButton {
@@ -90,4 +92,10 @@ h2 {
   font-family: cursive;
   font-size: 1em;
   margin: 1em;
+}
+
+#playerName {
+  border: 1px black solid;
+  padding: 0 3px;
+  font-size: 1.2em;
 }

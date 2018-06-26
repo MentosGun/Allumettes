@@ -11,10 +11,16 @@ let app = {
   game: document.querySelector('.game'),
   status: document.querySelector('#status'),
   gameButton: null,
+  restartButton: document.querySelector('#restart'),
   remainingMatches: null,
   instantPlayer: null,
   playerName: null,
+  initGame: function() {
+    app.noMorePlayers()
+  },
   restartGame: function() {
+    app.status.style.border = "none"
+    app.status.style.padding = "0"
     app.playerInput.value = ""
     if (app.matchesInput) {
       app.matchesInput.value = ""
@@ -36,11 +42,12 @@ let app = {
     }
     app.playerNumber = 0
     app.status.innerHTML = ""
+    app.restartButton.innerHTML = "Lancer Partie"
     app.init()
   },
   init: function() {
-    document.querySelector('#restart').onclick = function() {
-      app.restartGame()
+    app.restartButton.onclick = function() {
+      app.initGame()
     }
     app.playerInput = document.querySelector('#playerInput')
     app.playerInput.onkeyup = function(event){
@@ -77,11 +84,21 @@ let app = {
     app.playersNumberCheck()
   },
   playersNumberCheck: function() {
-    if (document.querySelectorAll('.onePlayer').length >= 3) {
+    if (document.querySelectorAll('.onePlayer').length >= 5) {
+      app.noMorePlayers()
+    }
+  },
+  noMorePlayers: function() {
+    if (document.querySelectorAll('.onePlayer').length >= 2) {
       app.playerButton.onclick = null
       app.divPlayers.style.display = "none"
       app.divMatches.style.display = "block"
       app.playerNumber = 1
+      app.restartButton.innerHTML = "Recommencer"
+      app.playerInput.value = ''
+      app.restartButton.onclick = function() {
+        app.restartGame()
+      }
       app.selectingNumberOfMatches()
     }
   },
@@ -166,7 +183,7 @@ let app = {
   },
   changePlayer: function() {
     app.instantPlayer = document.querySelector('#player' + app.playerNumber).textContent.substr(4)
-    app.playerName.innerHTML = "Tour: " + app.instantPlayer
+    app.playerName.innerHTML = "Tour de : " + app.instantPlayer
   },
   oneLoop: function() {
     let recoveredValue = null
@@ -191,7 +208,7 @@ let app = {
     if (app.remainingMatches <= 0) {
       app.endGame()
     }
-    else if (app.playerNumber > 3) {
+    else if (app.playerNumber > document.querySelectorAll('.onePlayer').length) {
       app.playerNumber = 1
       app.changePlayer()
     }
@@ -209,6 +226,8 @@ let app = {
     app.status.innerHTML = "YOU LOSE " + app.instantPlayer
     app.status.style.fontFamily = "serif"
     app.status.style.fontSize = "3em"
+    app.status.style.border = "1px black solid"
+    app.status.style.padding = ".2em .2em"
   }
 }
 
